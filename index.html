@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bornholm 2027 · en invitation fra Farmor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --hav:#1b6ca8; --hav-dyb:#0d3b5c; --sol:#f4b53b; --sand:#f5ead3;
+    --koral:#e0664a; --groen:#3f8f6b; --blaek:#15232e; --hvid:#fffdf8;
+    --serif:"Fraunces",Georgia,serif; --sans:"Outfit",-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);color:var(--blaek);background:var(--hvid);
+    line-height:1.6;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:var(--serif);line-height:1.05;font-weight:600;}
+  a{color:inherit;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  .eyebrow{font-family:var(--sans);text-transform:uppercase;letter-spacing:.28em;
+    font-size:.72rem;font-weight:700;color:var(--koral);}
+
+  /* sticky nav */
+  nav.bar{position:sticky;top:0;z-index:50;background:rgba(255,253,248,.86);
+    backdrop-filter:blur(10px);border-bottom:1px solid rgba(13,59,92,.1);}
+  nav.bar .row{display:flex;align-items:center;justify-content:space-between;
+    height:62px;max-width:1120px;margin:0 auto;padding:0 28px;}
+  nav.bar .brand{font-family:var(--serif);font-weight:600;font-size:1.15rem;color:var(--hav-dyb);}
+  nav.bar .brand b{color:var(--koral);}
+  nav.bar .links{display:flex;gap:26px;font-size:.92rem;font-weight:500;}
+  nav.bar .links a{text-decoration:none;color:var(--hav-dyb);opacity:.75;transition:.2s;}
+  nav.bar .links a:hover{opacity:1;color:var(--koral);}
+  @media(max-width:720px){nav.bar .links{display:none;}}
+
+  /* hero */
+  .hero{position:relative;color:var(--hvid);overflow:hidden;min-height:86vh;display:flex;align-items:center;}
+  .hero-photo{position:absolute;inset:0;background:#0d3b5c center/cover no-repeat;
+    background-image:url("https://commons.wikimedia.org/wiki/Special:FilePath/Dueodde,_Bornholm_(2012-07-09),_by_Klugschnacker_in_Wikipedia_(4).JPG?width=1600");}
+  .hero-overlay{position:absolute;inset:0;
+    background:linear-gradient(115deg,rgba(13,59,92,.84) 0%,rgba(13,59,92,.42) 55%,rgba(224,102,74,.32) 100%);}
+  .hero .copy{position:relative;z-index:2;width:100%;}
+  .hero h1{font-size:clamp(2.6rem,7vw,5.6rem);font-weight:900;max-width:14ch;
+    text-shadow:0 2px 30px rgba(8,30,48,.35);}
+  .hero .lede{font-size:clamp(1.05rem,2.2vw,1.5rem);max-width:30ch;margin-top:.7rem;
+    font-weight:400;text-shadow:0 1px 14px rgba(8,30,48,.4);}
+  .hero .stamp{display:inline-block;margin-top:1.6rem;background:var(--koral);
+    color:#fff;font-weight:600;padding:.55em 1.2em;border-radius:2px 12px 2px 12px;
+    font-size:.95rem;letter-spacing:.02em;}
+
+  /* sections */
+  section.block{padding:clamp(64px,9vw,120px) 0;}
+  .tint-sand{background:var(--sand);}
+  .tint-deep{background:var(--hav-dyb);color:var(--hvid);}
+  .tint-deep .eyebrow{color:var(--sol);}
+  .lead-h{font-size:clamp(1.9rem,4.4vw,3.2rem);margin:.35em 0 .2em;color:var(--hav-dyb);max-width:18ch;}
+  .tint-deep .lead-h{color:var(--hvid);}
+  .intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,72px);align-items:end;}
+  @media(max-width:780px){.intro-grid{grid-template-columns:1fr;}}
+  .intro-grid p{font-size:1.12rem;color:#33454f;}
+  .tint-deep .intro-grid p{color:#cfe2ee;}
+
+  /* people / cards */
+  .cards{display:grid;gap:22px;margin-top:46px;}
+  .c3{grid-template-columns:repeat(3,1fr);}
+  .c4{grid-template-columns:repeat(4,1fr);}
+  @media(max-width:880px){.c3,.c4{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.c3,.c4{grid-template-columns:1fr;}}
+  .card{background:var(--hvid);border:1px solid rgba(13,59,92,.1);
+    border-radius:4px 20px 4px 20px;padding:26px 24px;
+    box-shadow:0 14px 34px -22px rgba(13,59,92,.5);transition:transform .25s,box-shadow .25s;}
+  .tint-deep .card{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);}
+  .card:hover{transform:translateY(-5px);box-shadow:0 22px 44px -24px rgba(13,59,92,.6);}
+  .card .ico{width:46px;height:46px;color:var(--koral);margin-bottom:14px;}
+  .card .ico svg{width:100%;height:100%;display:block;}
+  .card.attr{padding:0;overflow:hidden;display:flex;flex-direction:column;}
+  .card.attr .ph{width:100%;height:160px;object-fit:cover;display:block;background:#cfe3f0;}
+  .card.attr .body{padding:18px 20px 22px;}
+  .card.attr.noimg .ph{display:none;}
+  .card.attr.noimg .body{padding-top:24px;}
+  /* section images */
+  .ide-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,64px);align-items:center;}
+  @media(max-width:780px){.ide-grid{grid-template-columns:1fr;}}
+  .side{width:100%;height:380px;object-fit:cover;border-radius:4px 22px 4px 22px;
+    box-shadow:0 18px 42px -24px rgba(13,59,92,.6);background:#cfe3f0;}
+  .banner{width:100%;height:300px;object-fit:cover;border-radius:4px 22px 4px 22px;
+    margin-top:36px;display:block;background:#0b2f48;
+    box-shadow:0 18px 42px -26px rgba(0,0,0,.6);}
+  .imgfail{display:none;}
+  .card h3{font-size:1.32rem;color:var(--hav-dyb);margin-bottom:6px;font-weight:600;}
+  .tint-deep .card h3{color:var(--hvid);}
+  .card p{font-size:.99rem;color:#4a5b66;}
+  .tint-deep .card p{color:#bfd5e3;}
+
+  /* route timeline */
+  .route{display:flex;flex-wrap:wrap;align-items:stretch;gap:14px;margin-top:46px;}
+  .stop{flex:1;min-width:140px;background:var(--hvid);border:1px solid rgba(13,59,92,.12);
+    border-radius:14px;padding:20px 18px;position:relative;}
+  .stop .k{font-family:var(--serif);font-size:1.7rem;color:var(--koral);font-weight:600;}
+  .stop .l{font-weight:600;color:var(--hav-dyb);margin-top:2px;}
+  .stop .t{font-size:.9rem;color:#5a6b76;margin-top:2px;}
+  .arrow{display:flex;align-items:center;color:var(--hav);font-size:1.6rem;}
+  @media(max-width:680px){.arrow{transform:rotate(90deg);justify-content:center;width:100%;}}
+
+  /* itinerary */
+  .week{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:46px;}
+  @media(max-width:820px){.week{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:460px){.week{grid-template-columns:1fr;}}
+  .day{background:var(--hvid);border-radius:4px 16px 4px 16px;padding:18px 18px;
+    border-left:4px solid var(--sol);box-shadow:0 12px 28px -22px rgba(13,59,92,.5);}
+  .day .dd{font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    font-size:.74rem;color:var(--koral);}
+  .day p{margin-top:5px;color:#3c4d58;font-size:1rem;}
+
+  /* budget */
+  .bud{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center;margin-top:42px;}
+  @media(max-width:820px){.bud{grid-template-columns:1fr;}}
+  .bud table{width:100%;border-collapse:collapse;font-size:1.02rem;}
+  .bud td{padding:14px 4px;border-bottom:1px solid rgba(255,255,255,.16);}
+  .bud td:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .bud tr:last-child td{border-bottom:none;font-weight:700;font-size:1.18rem;
+    font-family:var(--serif);color:var(--sol);}
+  .bud .hero-num{font-family:var(--serif);font-weight:900;
+    font-size:clamp(3.4rem,9vw,6.2rem);color:var(--sol);line-height:.95;}
+  .bud .hero-num small{display:block;font-family:var(--sans);font-weight:500;
+    font-size:1.05rem;color:#cfe2ee;letter-spacing:.02em;margin-top:10px;max-width:24ch;}
+
+  /* cta footer */
+  .cta{background:linear-gradient(160deg,var(--hav) 0%,var(--hav-dyb) 100%);color:var(--hvid);
+    text-align:left;position:relative;overflow:hidden;}
+  .cta .sun-deco{position:absolute;right:-60px;top:-60px;width:260px;height:260px;
+    border-radius:50%;background:radial-gradient(circle,var(--sol) 0%,rgba(244,181,59,0) 70%);opacity:.5;}
+  .cta h2{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:900;}
+  .cta ul{list-style:none;margin:30px 0 0;max-width:640px;}
+  .cta li{position:relative;padding:12px 0 12px 40px;font-size:1.12rem;border-bottom:1px solid rgba(255,255,255,.12);}
+  .cta li:last-child{border-bottom:none;}
+  .cta li::before{content:"";position:absolute;left:0;top:14px;width:22px;height:22px;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f4b53b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12l5 5L20 6'/%3E%3C/svg%3E") no-repeat center/contain;}
+  .cta .stamp{display:inline-block;margin-top:34px;background:var(--koral);color:#fff;
+    font-weight:600;padding:.7em 1.5em;border-radius:2px 14px 2px 14px;font-size:1.05rem;}
+  footer.fine{padding:26px 0;text-align:center;color:#7d8d97;font-size:.85rem;background:var(--hav-dyb);}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<nav class="bar">
+  <div class="row">
+    <span class="brand">Bornholm <b>2027</b></span>
+    <div class="links">
+      <a href="#ide">Idéen</a>
+      <a href="#hold">Holdet</a>
+      <a href="#bo">Bolig</a>
+      <a href="#tur">Turen</a>
+      <a href="#uge">Ugen</a>
+      <a href="#budget">Budget</a>
+      <a href="#ja">Er I med?</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-photo" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="copy">
+    <div class="wrap">
+      <p class="eyebrow" style="color:#ffe6b0">En invitation fra Farmor</p>
+      <h1>Solskinsøen kalder</h1>
+      <p class="lede">Farmor inviterer hele familien på en uges sommerferie på Bornholm.</p>
+      <span class="stamp">Til Vårlyngen- og Årslevfamilien · juli 2027</span>
+    </div>
+  </div>
+</header>
+
+<!-- IDEEN -->
+<section class="block" id="ide">
+  <div class="wrap ide-grid reveal">
+    <div>
+      <p class="eyebrow">Idéen</p>
+      <h2 class="lead-h">En uge, hvor hele familien er samlet</h2>
+      <p style="margin-top:18px;">Farmor vil gerne samle os alle til en rigtig familieferie. Vårlyngenfamilien, Årslevfamilien og Farmor, ni personer i alt, en hel uge med strande, klipper, røgeri og masser at lave for børnene. Hver familie får sin egen feriebolig, så vi holder ferie sammen men stadig har vores eget privatliv.</p>
+    </div>
+    <img class="side" loading="lazy" alt="Hammershus og Bornholms kyst" onerror="this.classList.add('imgfail')" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hammershus_ruin_Bornholm_Denmark_3.jpg?width=900">
+  </div>
+</section>
+
+<!-- HOLDET -->
+<section class="block tint-sand" id="hold">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Hvem tager med</p>
+      <h2 class="lead-h">Holdet</h2>
+    </div>
+    <div class="cards c3 reveal">
+      <div class="card">
+        <span class="ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="9" r="3"/><circle cx="24" cy="18" r="7"/><path d="M11 40c0-8 6-12 13-12s13 4 13 12"/><path d="M20 17h8"/></svg></span>
+        <h3>Farmor</h3><p>Vært og initiativtager til hele turen.</p>
+      </div>
+      <div class="card">
+        <span class="ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="12" r="4"/><path d="M4 40c0-7 3-11 7-11s7 4 7 11"/><circle cx="22" cy="12" r="4"/><path d="M15 40c0-7 3-11 7-11s7 4 7 11"/><circle cx="32" cy="20" r="3"/><path d="M27 40c0-5 2-8 5-8s5 3 5 8"/><circle cx="40" cy="22" r="2.6"/><path d="M36 40c0-4 1.8-6.5 4-6.5s4 2.5 4 6.5"/></svg></span>
+        <h3>Vårlyngenfamilien</h3><p>To voksne og to børn.</p>
+      </div>
+      <div class="card">
+        <span class="ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="12" r="4"/><path d="M4 40c0-7 3-11 7-11s7 4 7 11"/><circle cx="22" cy="12" r="4"/><path d="M15 40c0-7 3-11 7-11s7 4 7 11"/><circle cx="32" cy="20" r="3"/><path d="M27 40c0-5 2-8 5-8s5 3 5 8"/><circle cx="40" cy="22" r="2.6"/><path d="M36 40c0-4 1.8-6.5 4-6.5s4 2.5 4 6.5"/></svg></span>
+        <h3>Årslevfamilien</h3><p>To voksne og to børn.</p>
+      </div>
+    </div>
+    <p class="reveal" style="margin-top:26px;color:#6a7b86;font-size:1.05rem;">Fem voksne og fire børn. To familier samlet hos Farmor.</p>
+  </div>
+</section>
+
+<!-- BOLIG -->
+<section class="block" id="bo">
+  <div class="wrap">
+    <div class="intro-grid reveal">
+      <div>
+        <p class="eyebrow">Sådan bor vi</p>
+        <h2 class="lead-h">Separate lejligheder, samme sted</h2>
+      </div>
+      <div><p>Vi vælger et feriecenter, hvor vi kan booke tre boliger ved siden af hinanden. Så har hver familie sit eget køkken og bad, men vi er stadig samlet og deler udeområderne.</p></div>
+    </div>
+    <div class="cards c3 reveal">
+      <div class="card">
+        <span class="ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="8"/><path d="M22 22l18 18"/><path d="M33 33l4 4M37 29l4 4"/></svg></span>
+        <h3>Eget køkken &amp; bad</h3><p>Hver familie sin egen lejlighed med ro til børnenes rytmer.</p>
+      </div>
+      <div class="card">
+        <span class="ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 26l9-8 9 8v15H5z"/><path d="M25 26l9-8 9 8v15H25z"/><path d="M11 41v-6h6v6M31 41v-6h6v6"/></svg></span>
+        <h3>Tæt på hinanden</h3><p>Boliger ved siden af hinanden, så det er let at mødes.</p>
+      </div>
+      <div class="card">
+        <span class="ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13L6 41M10 13L14 41M38 13L34 41M38 13L42 41"/><path d="M7 13h34"/><path d="M20 15v15M28 15v15M18 30h12"/></svg></span>
+        <h3>Fælles udeområder</h3><p>Legeplads og grønne arealer, hvor fætre og kusiner kan lege.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TUREN -->
+<section class="block tint-deep" id="tur">
+  <div class="wrap">
+    <div class="intro-grid reveal">
+      <div>
+        <p class="eyebrow">Sådan kommer vi derover</p>
+        <h2 class="lead-h">Vi kører, via Ystad</h2>
+      </div>
+      <div><p>Vi tager vores egne biler med, så vi har fuld frihed på øen. Turen går over Øresundsbroen til Ystad og videre med den korte færge til Rønne. Samlet cirka 4½ til 5 timer fra dør til havn.</p></div>
+    </div>
+    <img class="banner reveal" loading="lazy" alt="Færge på Bornholmslinjen" onerror="this.classList.add('imgfail')" src="https://commons.wikimedia.org/wiki/Special:FilePath/Express_1_p%C3%A5_Bornholmslinjen.jpg?width=1200">
+    <div class="route reveal">
+      <div class="stop"><div class="k">0 t</div><div class="l">Odense</div><div class="t">Vi kører hjemmefra</div></div>
+      <div class="arrow">→</div>
+      <div class="stop"><div class="k">2:45</div><div class="l">Ystad</div><div class="t">Via Øresundsbroen</div></div>
+      <div class="arrow">→</div>
+      <div class="stop"><div class="k">1:20</div><div class="l">Færgen</div><div class="t">Ystad til Rønne</div></div>
+      <div class="arrow">→</div>
+      <div class="stop"><div class="k">Fremme</div><div class="l">Bornholm</div><div class="t">Klar til ferie</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- UGEN -->
+<section class="block tint-sand" id="uge">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">En uge fuld af oplevelser</p>
+      <h2 class="lead-h">Sådan kunne ugen se ud</h2>
+    </div>
+    <div class="week reveal">
+      <div class="day"><div class="dd">Lørdag</div><p>Ankomst, find boligen, køb ind.</p></div>
+      <div class="day"><div class="dd">Søndag</div><p>Stranddag ved Balka eller Dueodde.</p></div>
+      <div class="day"><div class="dd">Mandag</div><p>NaturBornholm med dinosaurer.</p></div>
+      <div class="day"><div class="dd">Tirsdag</div><p>Brændesgårdshaven og vandland.</p></div>
+      <div class="day"><div class="dd">Onsdag</div><p>Gudhjem, røgeri og is.</p></div>
+      <div class="day"><div class="dd">Torsdag</div><p>Hammershus og rovfugleshow.</p></div>
+      <div class="day"><div class="dd">Fredag</div><p>Cykeltur, marked, pak sammen.</p></div>
+      <div class="day"><div class="dd">Lørdag</div><p>Morgenbad og hjemrejse.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BØRN -->
+<section class="block" id="boern">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Til børnene</p>
+      <h2 class="lead-h">Der er noget for alle aldre</h2>
+    </div>
+    <div class="cards c4 reveal">
+      <div class="card attr">
+        <img class="ph" loading="lazy" alt="Dinosaurmodel på NaturBornholm" onerror="this.closest('.card').classList.add('noimg')" src="https://commons.wikimedia.org/wiki/Special:FilePath/NaturBornholm_Huayangosaurus.jpg?width=600">
+        <div class="body"><h3>NaturBornholm</h3><p>Dinosaurer, akvarium og kæmpe legeplads.</p></div>
+      </div>
+      <div class="card attr">
+        <img class="ph" loading="lazy" alt="Karrusel i forlystelsespark" onerror="this.closest('.card').classList.add('noimg')" src="https://commons.wikimedia.org/wiki/Special:FilePath/Flying_horses_carousel.JPG?width=600">
+        <div class="body"><h3>Brændesgårdshaven</h3><p>Forlystelser, vandland og en lille zoo.</p></div>
+      </div>
+      <div class="card attr">
+        <img class="ph" loading="lazy" alt="Havørn i flugt" onerror="this.closest('.card').classList.add('noimg')" src="https://commons.wikimedia.org/wiki/Special:FilePath/White_tailed_Eagle_DG.JPG?width=600">
+        <div class="body"><h3>Rovfugleshow</h3><p>Ørne og falke helt tæt på.</p></div>
+      </div>
+      <div class="card attr">
+        <img class="ph" loading="lazy" alt="Hammershus borgruin" onerror="this.closest('.card').classList.add('noimg')" src="https://commons.wikimedia.org/wiki/Special:FilePath/2015_Hammershus_Bornholm.JPG?width=600">
+        <div class="body"><h3>Hammershus</h3><p>Borgruin med klipper at lege på.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUDGET -->
+<section class="block tint-deep" id="budget">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Hvad koster det</p>
+      <h2 class="lead-h">Budget for hele gruppen, 1 uge</h2>
+    </div>
+    <div class="bud reveal">
+      <div>
+        <div class="hero-num">40.500 kr.<small>Samlet estimat i mellem-scenariet. Farmor er vært, og vi deler resten mellem de to familier.</small></div>
+      </div>
+      <table>
+        <tr><td>3 ferieboliger (efter Ældre Sagen rabat)</td><td>≈ 19.300 kr.</td></tr>
+        <tr><td>Færge og Øresundsbro, 2 biler t/r</td><td>≈ 7.200 kr.</td></tr>
+        <tr><td>Brændstof, mad, aktiviteter, diverse</td><td>≈ 14.000 kr.</td></tr>
+        <tr><td>I alt</td><td>≈ 40.500 kr.</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- HVORFOR -->
+<section class="block" id="hvorfor">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Hvorfor sige ja</p>
+      <h2 class="lead-h">Tre gode grunde</h2>
+    </div>
+    <div class="cards c3 reveal">
+      <div class="card">
+        <span class="ico"><svg viewBox="0 0 48 48" fill="currentColor"><path d="M24 41S6 29 6 17.5A8.5 8.5 0 0 1 24 13a8.5 8.5 0 0 1 18 4.5C42 29 24 41 24 41z"/></svg></span>
+        <h3>Tid sammen</h3><p>Fætre og kusiner, Farmor og hele flokken samlet en hel uge.</p>
+      </div>
+      <div class="card">
+        <span class="ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M16 25l6 6 11-13"/></svg></span>
+        <h3>Nemt og afslappet</h3><p>Eget rum til hver familie, kort sejltur og alt er planlagt.</p>
+      </div>
+      <div class="card">
+        <span class="ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="19" r="8"/><path d="M5 33h7M16 33h7M27 33h7M38 33h5"/><path d="M7 39h8M19 39h8M31 39h8"/></svg></span>
+        <h3>Minder</h3><p>Strand, is, klipper og lange sommeraftener.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="block cta" id="ja">
+  <div class="sun-deco"></div>
+  <div class="wrap reveal">
+    <p class="eyebrow" style="color:#ffe6b0">Næste skridt</p>
+    <h2>Er I med?</h2>
+    <ul>
+      <li>Vi finder en uge i juli 2027, der passer alle.</li>
+      <li>Vi booker tre lejligheder samme sted via Farmors Ældre Sagen.</li>
+      <li>Vi booker færge og bro i god tid, så det bliver billigst.</li>
+    </ul>
+    <span class="stamp">Sig til, så går vi i gang!</span>
+  </div>
+</section>
+
+<footer class="fine">Bornholm 2027 · en familieidé fra Farmor · fotos: Wikimedia Commons</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.16});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
