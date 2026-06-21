@@ -139,7 +139,10 @@
   .cta li::before{content:"";position:absolute;left:0;top:14px;width:22px;height:22px;
     background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f4b53b' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12l5 5L20 6'/%3E%3C/svg%3E") no-repeat center/contain;}
   .cta .stamp{display:inline-block;margin-top:34px;background:var(--koral);color:#fff;
-    font-weight:600;padding:.7em 1.5em;border-radius:2px 14px 2px 14px;font-size:1.05rem;}
+    font-weight:600;padding:.7em 1.5em;border-radius:2px 14px 2px 14px;font-size:1.05rem;
+    text-decoration:none;cursor:pointer;transition:transform .15s,box-shadow .15s;}
+  a.stamp:hover{transform:translateY(-2px);box-shadow:0 10px 22px -8px rgba(224,102,74,.7);}
+  .cta .stamp .tel{display:block;font-size:.92rem;font-weight:500;opacity:.92;margin-top:2px;}
   footer.fine{padding:26px 0;text-align:center;color:#7d8d97;font-size:.85rem;background:var(--hav-dyb);}
 
   /* reveal */
@@ -369,7 +372,7 @@
       <li>Vi booker tre lejligheder samme sted via Farmors Ældre Sagen.</li>
       <li>Vi booker færge og bro i god tid, så det bliver billigst.</li>
     </ul>
-    <span class="stamp">Sig til, så går vi i gang!</span>
+    <a class="stamp" href="tel:+4522585645">Sig til, så går vi i gang!<span class="tel">Ring til Farmor · +45 22 58 56 45</span></a>
   </div>
 </section>
 
